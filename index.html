@@ -32,293 +32,349 @@
             max-width: 150px; /* 控制logo大小 */
             opacity: 0.8;
         }
+        .flow-box {
+            background-color: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            font-weight: 500;
+        }
+        .flow-box.input { background-color: #eff6ff; color: #1e40af; border-color: #93c5fd; }
+        .flow-box.process { background-color: #fefce8; color: #854d0e; border-color: #fde047; }
+        .flow-box.engine { background-color: #ecfdf5; color: #065f46; border-color: #6ee7b7; font-size: 1.1rem; padding: 1rem; }
+        .flow-box.output { background-color: #fdf2f8; color: #9d174d; border-color: #f9a8d4; }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800 antialiased">
 
-    <div id="slides-container" class="w-full h-full">
+<div id="slides-container" class="w-full h-full">
 
-        <!-- 幻灯片 1: 封面 -->
-        <div id="slide-1" class="slide active flex-col items-center justify-center text-center p-8 bg-white">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">基于轨迹预测与李雅普诺夫优化的RIS辅助智能汽车边缘计算网络研究</h1>
-            <h2 class="text-2xl md:text-3xl font-semibold text-gray-600 mb-12">硕士学位论文开题报告</h2>
-            <div class="text-lg text-gray-700">
-                <p class="mb-2"><strong>汇报人：</strong> 谢俊颖</p>
-                <p class="mb-2"><strong>指导教师：</strong> 陈睿 副教授</p>
-                <p class="mb-2"><strong>所在学院：</strong> 计算机与数学学院</p>
-                <p><strong>汇报日期：</strong> 2025年09月15日</p>
-            </div>
-             <img src="./7d4f9e8855cb8b7a4e12dbee61d3e30e.jpg" alt="[中南林业科技大学Logo]" class="brand-logo absolute bottom-8 left-8">
+    <!-- 幻灯片 1: 封面 -->
+    <div id="slide-1" class="slide active flex-col items-center justify-center text-center p-8 bg-white">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">基于轨迹预测与李雅普诺夫优化的RIS辅助智能汽车边缘计算网络研究</h1>
+        <h2 class="text-2xl md:text-3xl font-semibold text-gray-600 mb-12">硕士学位论文开题报告</h2>
+        <div class="text-lg text-gray-700">
+            <p class="mb-2"><strong>汇报人：</strong> 谢俊颖</p>
+            <p class="mb-2"><strong>指导教师：</strong> 陈睿 副教授</p>
+            <p class="mb-2"><strong>所在学院：</strong> 计算机与数学学院</p>
+            <p><strong>汇报日期：</strong> 2025年09月15日</p>
         </div>
+        <img src="./7d4f9e8855cb8b7a4e12dbee61d3e30e.jpg" alt="[中南林业科技大学Logo]" class="brand-logo absolute bottom-8 left-8">
+    </div>
 
-        <!-- 幻灯片 2: 目录 -->
-        <div id="slide-2" class="slide flex-col items-center justify-center p-8 bg-gray-50">
-            <h2 class="text-3xl font-bold mb-8 text-center">汇报大纲</h2>
-            <div class="space-y-4 text-xl text-left w-full max-w-2xl">
-                <div class="p-4 bg-white rounded-lg shadow-sm transition hover:shadow-md"><b>1.</b> <span class="ml-2">研究背景与意义</span> <span class="text-gray-500 ml-2">(Why? - 为什么要做这个研究)</span></div>
-                <div class="p-4 bg-white rounded-lg shadow-sm transition hover:shadow-md"><b>2.</b> <span class="ml-2">国内外研究现状</span> <span class="text-gray-500 ml-2">(What's been done? - 现有工作的进展与不足)</span></div>
-                <div class="p-4 bg-white rounded-lg shadow-sm transition hover:shadow-md"><b>3.</b> <span class="ml-2">研究内容与思路</span> <span class="text-gray-500 ml-2">(What & How? - 我要研究什么以及怎么做)</span></div>
-                <div class="p-4 bg-white rounded-lg shadow-sm transition hover:shadow-md"><b>4.</b> <span class="ml-2">创新点与预期成果</span> <span class="text-gray-500 ml-2">(Novelty & Outcome - 我的工作新在何处，能产出什么)</span></div>
-                <div class="p-4 bg-white rounded-lg shadow-sm transition hover:shadow-md"><b>5.</b> <span class="ml-2">研究方法与进度安排</span> <span class="text-gray-500 ml-2">(Methodology & Plan - 我将使用的工具和时间规划)</span></div>
+    <!-- 幻灯片 2: 目录 -->
+    <div id="slide-2" class="slide flex-col items-center justify-center p-8 bg-gray-50">
+        <h2 class="text-3xl font-bold mb-8 text-center">汇报大纲</h2>
+        <div class="space-y-4 text-xl text-left w-full max-w-2xl">
+            <div class="p-4 bg-white rounded-lg shadow-sm transition hover:shadow-md"><b>1.</b> <span class="ml-2">研究背景与意义</span> <span class="text-gray-500 ml-2">(Why? - 为什么要做这个研究)</span></div>
+            <div class="p-4 bg-white rounded-lg shadow-sm transition hover:shadow-md"><b>2.</b> <span class="ml-2">国内外研究现状</span> <span class="text-gray-500 ml-2">(What's been done? - 现有工作的进展与不足)</span></div>
+            <div class="p-4 bg-white rounded-lg shadow-sm transition hover:shadow-md"><b>3.</b> <span class="ml-2">研究内容与思路</span> <span class="text-gray-500 ml-2">(What & How? - 我要研究什么以及怎么做)</span></div>
+            <div class="p-4 bg-white rounded-lg shadow-sm transition hover:shadow-md"><b>4.</b> <span class="ml-2">创新点与预期成果</span> <span class="text-gray-500 ml-2">(Novelty & Outcome - 我的工作新在何处，能产出什么)</span></div>
+            <div class="p-4 bg-white rounded-lg shadow-sm transition hover:shadow-md"><b>5.</b> <span class="ml-2">研究方法与进度安排</span> <span class="text-gray-500 ml-2">(Methodology & Plan - 我将使用的工具和时间规划)</span></div>
+        </div>
+    </div>
+
+    <!-- 幻灯片 3: 研究背景与意义 (IMAGE FIXED) -->
+    <div id="slide-3" class="slide items-center justify-center p-8 lg:p-12 bg-white">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl w-full">
+            <div class="flex flex-col justify-center">
+                <h2 class="text-3xl font-bold mb-6">1. 研究背景与意义</h2>
+                <h3 class="text-xl font-semibold text-blue-600 mb-4">智能汽车时代：机遇与“边缘”挑战</h3>
+                <ul class="space-y-3 text-lg list-disc list-inside">
+                    <li><b>背景：海量数据，极致时延</b>
+                        <ul class="ml-6 text-base text-gray-600 space-y-1 mt-1">
+                            <li>智能汽车(L4级)每秒产生高达<b>GB级</b>数据，要求 <b>&lt; 50ms</b> 超低时延。</li>
+                            <li>传统云计算面临瓶颈，<b>车辆边缘计算 (VEC)</b> 成为关键。</li>
+                        </ul>
+                    </li>
+                    <li><b>核心挑战：动态性与随机性</b>
+                        <ul class="ml-6 text-base text-gray-600 space-y-1 mt-1">
+                            <li><b>高动态性</b>: 车辆高速移动，无线信道快速时变。</li>
+                            <li><b>任务随机性</b>: 计算任务突发，易导致系统过载、队列不稳定。</li>
+                        </ul>
+                    </li>
+                    <li><b>研究意义：构建稳定、高效的智能汽车“大脑”</b>
+                        <ul class="ml-6 text-base text-gray-600 space-y-1 mt-1">
+                            <li><b>理论上</b>：探索数据驱动预测与模型驱动优化的融合理论。</li>
+                            <li><b>实践上</b>：降低车载能耗(>30%)，提升系统响应速度，支撑“车-路-云”一体化架构。</li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
+    </div>
 
-        <!-- 幻灯片 3: 研究背景与意义 -->
-        <div id="slide-3" class="slide items-center justify-center p-8 lg:p-12 bg-white">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl w-full">
-                <div class="flex flex-col justify-center">
-                    <h2 class="text-3xl font-bold mb-6">1. 研究背景与意义</h2>
-                    <h3 class="text-xl font-semibold text-blue-600 mb-4">智能汽车时代：机遇与“边缘”挑战</h3>
-                    <ul class="space-y-3 text-lg list-disc list-inside">
-                        <li><b>背景：海量数据，极致时延</b>
-                            <ul class="ml-6 text-base text-gray-600 space-y-1 mt-1">
-                                <li>智能汽车(L4级)每秒产生高达<b>GB级</b>数据，要求 <b>&lt; 50ms</b> 超低时延。</li>
-                                <li>传统云计算面临瓶颈，<b>车辆边缘计算 (VEC)</b> 成为关键。</li>
-                            </ul>
-                        </li>
-                        <li><b>核心挑战：动态性与随机性</b>
-                             <ul class="ml-6 text-base text-gray-600 space-y-1 mt-1">
-                                <li><b>高动态性</b>: 车辆高速移动，无线信道快速时变。</li>
-                                <li><b>任务随机性</b>: 计算任务突发，易导致系统过载、队列不稳定。</li>
-                            </ul>
-                        </li>
-                        <li><b>研究意义：构建稳定、高效的智能汽车“大脑”</b>
-                             <ul class="ml-6 text-base text-gray-600 space-y-1 mt-1">
-                                <li><b>理论上</b>：探索数据驱动预测与模型驱动优化的融合理论。</li>
-                                <li><b>实践上</b>：降低车载能耗(>30%)，提升系统响应速度，支撑“车-路-云”一体化架构。</li>
+    <!-- 幻灯片 4: 国内外研究现状 -->
+    <div id="slide-4" class="slide flex-col items-center justify-center p-8 bg-gray-50">
+        <h2 class="text-3xl font-bold mb-2">2. 国内外研究现状</h2>
+        <p class="text-lg text-gray-600 mb-8">站在巨人肩膀上：现有研究的进展与空白</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl w-full">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-3 text-blue-700">动态任务卸载</h3>
+                <p class="mb-2"><b>进展:</b> 采用深度强化学习(DRL)、博弈论等方法应对车辆移动性。</p>
+                <p class="text-red-600"><b>不足:</b> DRL缺乏稳定性理论保证；博弈论模型多假设静态任务分布。</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-3 text-blue-700">RIS辅助的边缘计算</h3>
+                <p class="mb-2"><b>进展:</b> 已证实RIS能显著提升无人机/静态场景的通信与能量效率。</p>
+                <p class="text-red-600"><b>不足:</b> 鲜有研究将RIS应用于高动态、双重随机的车联网场景。</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-3 text-blue-700">李雅普诺夫优化应用</h3>
+                <p class="mb-2"><b>进展:</b> 成功用于无人机网络，解决任务随机到达下的队列稳定性问题。</p>
+                <p class="text-red-600"><b>不足:</b> 未考虑地面车辆复杂的、受交通环境约束的移动模式。</p>
+            </div>
+        </div>
+        <div class="mt-8 p-4 bg-blue-100 text-blue-800 rounded-lg max-w-6xl w-full text-center font-medium">
+            <b>研究空白 (Research Gap):</b> 缺乏一个能将<b>轨迹预测</b>、<b>RIS链路增强</b>、<b>李雅普诺夫稳定性保证</b>三者有效结合的统一优化框架。
+        </div>
+    </div>
+
+    <!-- 幻灯片 5: 研究内容与思路 - 总体框架 -->
+    <div id="slide-5" class="slide flex-col items-center justify-center p-8 bg-white">
+        <h2 class="text-3xl font-bold mb-2">3. 研究内容与思路 - 总体框架</h2>
+        <p class="text-lg text-gray-600 mb-8">思路：轨迹预测赋能的前瞻性在线优化</p>
+        <div class="w-full max-w-5xl p-6 bg-gray-50 rounded-xl shadow-lg flex flex-col items-center">
+            <!-- Inputs and Processing Rows -->
+            <div class="flex justify-around w-full">
+                <!-- Left Branch -->
+                <div class="flex flex-col items-center space-y-4 w-5/12">
+                    <div class="flow-box input w-full">车辆历史轨迹</div>
+                    <div class="text-3xl text-gray-400 font-light">↓</div>
+                    <div class="flow-box process w-full">LSTM 轨迹预测模块</div>
+                </div>
+                <!-- Right Branch -->
+                <div class="flex flex-col items-center space-y-4 w-5/12">
+                    <div class="flow-box input w-full">任务随机到达</div>
+                    <div class="text-3xl text-gray-400 font-light">↓</div>
+                    <div class="flow-box process w-full">系统状态感知 (队列积压)</div>
+                </div>
+            </div>
+
+            <!-- Joining Connectors -->
+            <div class="w-full h-16 relative">
+                <div class="absolute top-0 left-0 w-1/2 h-8 border-r-2 border-b-2 border-dashed border-gray-400 rounded-br-xl"></div>
+                <div class="absolute top-0 right-0 w-1/2 h-8 border-l-2 border-b-2 border-dashed border-gray-400 rounded-bl-xl"></div>
+                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 text-3xl text-gray-400 font-light">↓</div>
+            </div>
+
+            <!-- Central Engine -->
+            <div class="w-full max-w-md">
+                <div class="flow-box engine w-full">李雅普诺夫在线优化引擎 (单时隙决策)</div>
+            </div>
+
+            <!-- Branching Connectors -->
+            <div class="w-full h-12 relative">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 h-6 w-0 border-l-2 border-dashed border-gray-400"></div>
+                <div class="absolute top-6 left-1/4 w-1/2 h-0 border-t-2 border-dashed border-gray-400"></div>
+                <div class="absolute top-6 left-1/4 w-0 h-6 border-l-2 border-dashed border-gray-400"></div>
+                <div class="absolute top-6 left-1/2 w-0 h-6 border-l-2 border-dashed border-gray-400"></div>
+                <div class="absolute top-6 left-3/4 w-0 h-6 border-l-2 border-dashed border-gray-400"></div>
+                <div class="absolute bottom-0 left-1/4 -translate-x-1/2 text-3xl text-gray-400 font-light">↓</div>
+                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 text-3xl text-gray-400 font-light">↓</div>
+                <div class="absolute bottom-0 left-3/4 -translate-x-1/2 text-3xl text-gray-400 font-light">↓</div>
+            </div>
+
+            <!-- Outputs Row -->
+            <div class="flex justify-between w-full">
+                <div class="flow-box output w-[32%]">RIS 相位配置</div>
+                <div class="flow-box output w-[32%]">任务卸载决策</div>
+                <div class="flow-box output w-[32%]">计算/通信资源分配</div>
+            </div>
+        </div>
+        <div class="mt-6 text-center text-lg max-w-4xl">
+            通过“<b>动态感知</b> → <b>长期问题转化</b> → <b>实时分层决策</b>”的闭环思路，解决VEC网络中的双重挑战。
+        </div>
+    </div>
+
+    <!-- 幻灯片 6: 研究内容与思路 - 系统模型与目标 -->
+    <div id="slide-6" class="slide flex-col items-center justify-center p-8 bg-gray-50">
+        <h2 class="text-3xl font-bold mb-2">3. 研究内容与思路 - 系统模型与目标</h2>
+        <p class="text-lg text-gray-600 mb-8">问题建模：如何用数学语言描述问题？</p>
+        <div class="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h3 class="font-semibold text-xl mb-3">系统模型</h3>
+                <ul class="list-disc list-inside space-y-2">
+                    <li><b>网络模型:</b> 包含智能汽车(OBU)、路侧单元(RSU)和RIS。</li>
+                    <li><b>信道模型:</b> Rician衰落 + RIS级联信道。</li>
+                    <li><b>任务模型:</b> 任务随机到达，维护车载和边缘两级任务队列。</li>
+                </ul>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h3 class="font-semibold text-xl mb-3">优化目标 (P0): 最小化长期平均代价</h3>
+                <div class="math-block">
+                    $$
+                    \begin{aligned}
+                    (P0): \quad & \min_{X} \lim_{T \to \infty} \frac{1}{T} \sum_{t=0}^{T-1} \mathbb{E}[\text{Power}(t) + w \cdot \text{Delay}(t)] \\
+                    s.t. \quad & (C1): \text{All task queues are stable.} \\
+                    & (C2): \text{Resource constraints, etc.}
+                    \end{aligned}
+                    $$
+                </div>
+            </div>
+            <div class="md:col-span-2 bg-white p-6 rounded-lg shadow">
+                <h3 class="font-semibold text-xl mb-3">核心方法: 李雅普诺夫优化</h3>
+                <p class="mb-2">通过最小化“漂移+惩罚”函数，将长期随机问题 `(P0)` 转化为每时隙求解的确定性问题 `(P1)`：</p>
+                <div class="math-block">
+                    $$
+                    (P1): \quad \min_{X(t)} \Delta(t) + V \cdot (\text{Power}(t) + w \cdot \text{Delay}(t))
+                    $$
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 幻灯片 7: 学术创新点 -->
+    <div id="slide-7" class="slide flex-col items-center justify-center p-8 bg-white">
+        <h2 class="text-3xl font-bold mb-8">4. 学术创新点</h2>
+        <div class="max-w-5xl w-full space-y-6">
+            <div class="p-6 bg-gray-50 rounded-lg border-l-4 border-blue-500">
+                <h3 class="text-xl font-bold mb-2">创新点一：融合预测与在线优化的新框架</h3>
+                <p>首次将数据驱动的<b>LSTM轨迹预测</b>与模型驱动的<b>李雅普诺夫在线优化</b>相结合。利用预测信息克服传统在线优化的<b>“决策近视”</b>问题，实现对车辆高移动性的前瞻性应对。</p>
+            </div>
+            <div class="p-6 bg-gray-50 rounded-lg border-l-4 border-green-500">
+                <h3 class="text-xl font-bold mb-2">创新点二：面向队列稳定性的RIS动态调控方法</h3>
+                <p>突破RIS研究多以“最大化瞬时速率”为目标的局限，提出一种服务于<b>长期队列稳定性</b>的RIS动态相移策略，为RIS在动态随机网络中的应用提供了新思路。</p>
+            </div>
+            <div class="p-6 bg-gray-50 rounded-lg border-l-4 border-purple-500">
+                <h3 class="text-xl font-bold mb-2">创新点三：动态环境下计算-通信资源的跨层协同机制</h3>
+                <p>构建<b>轨迹-物理层(RIS)-MAC层(通信)-应用层(计算)</b>的跨层联合优化框架，能够根据预测轨迹和当前队列状态，动态权衡通信时延与计算负载。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 幻灯片 8: 预期成果 -->
+    <div id="slide-8" class="slide items-center justify-center p-8 bg-gray-50">
+        <div class="max-w-6xl w-full">
+            <h2 class="text-3xl font-bold mb-8 text-center">4. 预期成果</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="text-blue-500 mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v11.494m-5.253-7.494h10.5M12 21.75c-5.385 0-9.75-4.365-9.75-9.75S6.615 2.25 12 2.25s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z" /></svg></div>
+                    <h3 class="text-xl font-semibold mb-2">理论成果</h3>
+                    <p class="text-gray-600">发表<b>高水平论文1-2篇</b>，提出一套完整的<b>理论模型与优化框架</b>。</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="text-green-500 mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l-4 4-4-4M6 16l-4-4 4-4" /></svg></div>
+                    <h3 class="text-xl font-semibold mb-2">技术成果</h3>
+                    <p class="text-gray-600">完成<b>仿真原型系统</b>，实现：时延降低<b>>15%</b>, 能耗降低<b>>20%</b>, 队列<b>稳定有界</b>。</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="text-purple-500 mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg></div>
+                    <h3 class="text-xl font-semibold mb-2">应用成果</h3>
+                    <p class="text-gray-600">形成<b>技术报告1份</b>，为车路协同系统部署提供技术参考。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 幻灯片 9: 研究方法与进度安排 -->
+    <div id="slide-9" class="slide items-center justify-center p-8 bg-white">
+        <div class="max-w-6xl w-full">
+            <h2 class="text-3xl font-bold mb-8 text-center">5. 研究方法与进度安排</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4">研究方法</h3>
+                    <ul class="space-y-3">
+                        <li class="p-3 bg-gray-50 rounded-md"><b>理论建模:</b> 随机过程、排队论、最优化理论。</li>
+                        <li class="p-3 bg-gray-50 rounded-md"><b>算法设计:</b> 李雅普诺夫优化、块坐标下降法(BCD)、LSTM。</li>
+                        <li class="p-3 bg-gray-50 rounded-md"><b>实验验证:</b>
+                            <ul class="list-disc list-inside ml-4 mt-1 text-sm text-gray-700">
+                                <li><b>仿真平台:</b> MATLAB/Python + SUMO + NS-3</li>
+                                <li><b>数据集:</b> Waymo Open Dataset等</li>
+                                <li><b>对比方案:</b> Random, Without-RIS, Non-predictive等</li>
                             </ul>
                         </li>
                     </ul>
                 </div>
-                <div class="flex items-center justify-center">
-                    <img src="https://images.unsplash.com/photo-1549317661-bd3b2ae4c0c8?q=80&w=800&auto=format&fit=crop" alt="[智能汽车在城市道路上行驶的图片]" class="rounded-lg shadow-2xl object-cover h-full max-h-[500px]">
-                </div>
-            </div>
-        </div>
-
-        <!-- 幻灯片 4: 国内外研究现状 -->
-        <div id="slide-4" class="slide flex-col items-center justify-center p-8 bg-gray-50">
-            <h2 class="text-3xl font-bold mb-2">2. 国内外研究现状</h2>
-            <p class="text-lg text-gray-600 mb-8">站在巨人肩膀上：现有研究的进展与空白</p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl w-full">
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-3 text-blue-700">动态任务卸载</h3>
-                    <p class="mb-2"><b>进展:</b> 采用深度强化学习(DRL)、博弈论等方法应对车辆移动性。</p>
-                    <p class="text-red-600"><b>不足:</b> DRL缺乏稳定性理论保证；博弈论模型多假设静态任务分布。</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-3 text-blue-700">RIS辅助的边缘计算</h3>
-                    <p class="mb-2"><b>进展:</b> 已证实RIS能显著提升无人机/静态场景的通信与能量效率。</p>
-                    <p class="text-red-600"><b>不足:</b> 鲜有研究将RIS应用于高动态、双重随机的车联网场景。</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-3 text-blue-700">李雅普诺夫优化应用</h3>
-                    <p class="mb-2"><b>进展:</b> 成功用于无人机网络，解决任务随机到达下的队列稳定性问题。</p>
-                    <p class="text-red-600"><b>不足:</b> 未考虑地面车辆复杂的、受交通环境约束的移动模式。</p>
-                </div>
-            </div>
-            <div class="mt-8 p-4 bg-blue-100 text-blue-800 rounded-lg max-w-6xl w-full text-center font-medium">
-                <b>研究空白 (Research Gap):</b> 缺乏一个能将<b>轨迹预测</b>、<b>RIS链路增强</b>、<b>李雅普诺夫稳定性保证</b>三者有效结合的统一优化框架。
-            </div>
-        </div>
-        
-        <!-- 幻灯片 5: 研究内容与思路 - 总体框架 -->
-        <div id="slide-5" class="slide flex-col items-center justify-center p-8 bg-white">
-            <h2 class="text-3xl font-bold mb-2">3. 研究内容与思路 - 总体框架</h2>
-            <p class="text-lg text-gray-600 mb-8">思路：轨迹预测赋能的前瞻性在线优化</p>
-            <div class="max-w-4xl w-full">
-                <img src="https://i.imgur.com/G5g2mJc.png" alt="[研究思路框架图]" class="w-full rounded-lg shadow-xl">
-            </div>
-            <div class="mt-6 text-center text-lg max-w-4xl">
-                 通过“<b>动态感知</b> → <b>长期问题转化</b> → <b>实时分层决策</b>”的闭环思路，解决VEC网络中的双重挑战。
-            </div>
-        </div>
-
-        <!-- 幻灯片 6: 研究内容与思路 - 系统模型与目标 -->
-        <div id="slide-6" class="slide flex-col items-center justify-center p-8 bg-gray-50">
-            <h2 class="text-3xl font-bold mb-2">3. 研究内容与思路 - 系统模型与目标</h2>
-            <p class="text-lg text-gray-600 mb-8">问题建模：如何用数学语言描述问题？</p>
-            <div class="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white p-6 rounded-lg shadow">
-                    <h3 class="font-semibold text-xl mb-3">系统模型</h3>
-                    <ul class="list-disc list-inside space-y-2">
-                        <li><b>网络模型:</b> 包含智能汽车(OBU)、路侧单元(RSU)和RIS。</li>
-                        <li><b>信道模型:</b> Rician衰落 + RIS级联信道。</li>
-                        <li><b>任务模型:</b> 任务随机到达，维护车载和边缘两级任务队列。</li>
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4">进度安排</h3>
+                    <ul class="space-y-3">
+                        <li class="p-3 bg-gray-50 rounded-md"><b>2024.10—2025.05:</b> 文献调研，确定框架，完成模型设计。</li>
+                        <li class="p-3 bg-gray-50 rounded-md"><b>2025.06—2025.12:</b> 算法设计与仿真验证，优化参数。</li>
+                        <li class="p-3 bg-gray-50 rounded-md"><b>2026.01—2026.03:</b> 撰写论文初稿，整理研究成果。</li>
+                        <li class="p-3 bg-gray-50 rounded-md"><b>2026.04—2027.03:</b> 完善论文，准备毕业答辩。</li>
+                        <li class="p-3 bg-gray-50 rounded-md"><b>2027.04—2027.06:</b> 论文送审与答辩。</li>
                     </ul>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow">
-                    <h3 class="font-semibold text-xl mb-3">优化目标 (P0): 最小化长期平均代价</h3>
-                    <div class="math-block">
-                        $$
-                        \begin{aligned}
-                        (P0): \quad & \min_{X} \lim_{T \to \infty} \frac{1}{T} \sum_{t=0}^{T-1} \mathbb{E}[\text{Power}(t) + w \cdot \text{Delay}(t)] \\
-                        s.t. \quad & (C1): \text{All task queues are stable.} \\
-                               & (C2): \text{Resource constraints, etc.}
-                        \end{aligned}
-                        $$
-                    </div>
-                </div>
-                <div class="md:col-span-2 bg-white p-6 rounded-lg shadow">
-                     <h3 class="font-semibold text-xl mb-3">核心方法: 李雅普诺夫优化</h3>
-                     <p class="mb-2">通过最小化“漂移+惩罚”函数，将长期随机问题 `(P0)` 转化为每时隙求解的确定性问题 `(P1)`：</p>
-                     <div class="math-block">
-                        $$
-                        (P1): \quad \min_{X(t)} \Delta(t) + V \cdot (\text{Power}(t) + w \cdot \text{Delay}(t))
-                        $$
-                     </div>
-                </div>
             </div>
         </div>
-
-        <!-- 幻灯片 7: 学术创新点 -->
-        <div id="slide-7" class="slide flex-col items-center justify-center p-8 bg-white">
-            <h2 class="text-3xl font-bold mb-8">4. 学术创新点</h2>
-            <div class="max-w-5xl w-full space-y-6">
-                <div class="p-6 bg-gray-50 rounded-lg border-l-4 border-blue-500">
-                    <h3 class="text-xl font-bold mb-2">创新点一：融合预测与在线优化的新框架</h3>
-                    <p>首次将数据驱动的<b>LSTM轨迹预测</b>与模型驱动的<b>李雅普诺夫在线优化</b>相结合。利用预测信息克服传统在线优化的<b>“决策近视”</b>问题，实现对车辆高移动性的前瞻性应对。</p>
-                </div>
-                <div class="p-6 bg-gray-50 rounded-lg border-l-4 border-green-500">
-                    <h3 class="text-xl font-bold mb-2">创新点二：面向队列稳定性的RIS动态调控方法</h3>
-                    <p>突破RIS研究多以“最大化瞬时速率”为目标的局限，提出一种服务于<b>长期队列稳定性</b>的RIS动态相移策略，为RIS在动态随机网络中的应用提供了新思路。</p>
-                </div>
-                <div class="p-6 bg-gray-50 rounded-lg border-l-4 border-purple-500">
-                    <h3 class="text-xl font-bold mb-2">创新点三：动态环境下计算-通信资源的跨层协同机制</h3>
-                    <p>构建<b>轨迹-物理层(RIS)-MAC层(通信)-应用层(计算)</b>的跨层联合优化框架，能够根据预测轨迹和当前队列状态，动态权衡通信时延与计算负载。</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- 幻灯片 8: 预期成果 -->
-        <div id="slide-8" class="slide items-center justify-center p-8 bg-gray-50">
-             <div class="max-w-6xl w-full">
-                <h2 class="text-3xl font-bold mb-8 text-center">4. 预期成果</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                    <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <div class="text-blue-500 mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v11.494m-5.253-7.494h10.5M12 21.75c-5.385 0-9.75-4.365-9.75-9.75S6.615 2.25 12 2.25s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z" /></svg></div>
-                        <h3 class="text-xl font-semibold mb-2">理论成果</h3>
-                        <p class="text-gray-600">发表<b>高水平论文1-2篇</b>，提出一套完整的<b>理论模型与优化框架</b>。</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <div class="text-green-500 mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l-4 4-4-4M6 16l-4-4 4-4" /></svg></div>
-                        <h3 class="text-xl font-semibold mb-2">技术成果</h3>
-                        <p class="text-gray-600">完成<b>仿真原型系统</b>，实现：时延降低<b>>15%</b>, 能耗降低<b>>20%</b>, 队列<b>稳定有界</b>。</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <div class="text-purple-500 mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg></div>
-                        <h3 class="text-xl font-semibold mb-2">应用成果</h3>
-                        <p class="text-gray-600">形成<b>技术报告1份</b>，为车路协同系统部署提供技术参考。</p>
-                    </div>
-                </div>
-             </div>
-        </div>
-
-        <!-- 幻灯片 9: 研究方法与进度安排 -->
-        <div id="slide-9" class="slide items-center justify-center p-8 bg-white">
-            <div class="max-w-6xl w-full">
-                <h2 class="text-3xl font-bold mb-8 text-center">5. 研究方法与进度安排</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
-                        <h3 class="text-2xl font-semibold mb-4">研究方法</h3>
-                        <ul class="space-y-3">
-                            <li class="p-3 bg-gray-50 rounded-md"><b>理论建模:</b> 随机过程、排队论、最优化理论。</li>
-                            <li class="p-3 bg-gray-50 rounded-md"><b>算法设计:</b> 李雅普诺夫优化、块坐标下降法(BCD)、LSTM。</li>
-                            <li class="p-3 bg-gray-50 rounded-md"><b>实验验证:</b>
-                                <ul class="list-disc list-inside ml-4 mt-1 text-sm text-gray-700">
-                                    <li><b>仿真平台:</b> MATLAB/Python + SUMO + NS-3</li>
-                                    <li><b>数据集:</b> Waymo Open Dataset等</li>
-                                    <li><b>对比方案:</b> Random, Without-RIS, Non-predictive等</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-semibold mb-4">进度安排</h3>
-                        <ul class="space-y-3">
-                            <li class="p-3 bg-gray-50 rounded-md"><b>2024.10—2025.05:</b> 文献调研，确定框架，完成模型设计。</li>
-                            <li class="p-3 bg-gray-50 rounded-md"><b>2025.06—2025.12:</b> 算法设计与仿真验证，优化参数。</li>
-                            <li class="p-3 bg-gray-50 rounded-md"><b>2026.01—2026.03:</b> 撰写论文初稿，整理研究成果。</li>
-                            <li class="p-3 bg-gray-50 rounded-md"><b>2026.04—2027.03:</b> 完善论文，准备毕业答辩。</li>
-                            <li class="p-3 bg-gray-50 rounded-md"><b>2027.04—2027.06:</b> 论文送审与答辩。</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 幻灯片 10: 结束页 -->
-        <div id="slide-10" class="slide flex-col items-center justify-center text-center p-8 bg-gray-800 text-white">
-            <h2 class="text-4xl font-bold mb-4">汇报完毕</h2>
-            <p class="text-2xl text-gray-300">请各位老师批评指正</p>
-            <p class="text-3xl mt-8">谢谢！</p>
-        </div>
-
     </div>
 
-    <!-- 导航按钮 -->
-    <div class="fixed bottom-4 right-4 flex space-x-2">
-        <button id="prevBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-lg transition transform hover:scale-105">
-            上一页
-        </button>
-        <button id="nextBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-lg transition transform hover:scale-105">
-            下一页
-        </button>
-    </div>
-    
-    <div id="slide-counter" class="fixed bottom-4 left-4 text-gray-600 bg-white px-3 py-1 rounded-full shadow-lg text-sm">
-        1 / 10
+    <!-- 幻灯片 10: 结束页 -->
+    <div id="slide-10" class="slide flex-col items-center justify-center text-center p-8 bg-gray-800 text-white">
+        <h2 class="text-4xl font-bold mb-4">汇报完毕</h2>
+        <p class="text-2xl text-gray-300">请各位老师批评指正</p>
+        <p class="text-3xl mt-8">谢谢！</p>
     </div>
 
+</div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            let currentSlide = 1;
-            const totalSlides = document.querySelectorAll('.slide').length;
-            const slideCounter = document.getElementById('slide-counter');
+<!-- 导航按钮 -->
+<div class="fixed bottom-4 right-4 flex space-x-2">
+    <button id="prevBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-lg transition transform hover:scale-105">
+        上一页
+    </button>
+    <button id="nextBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-lg transition transform hover:scale-105">
+        下一页
+    </button>
+</div>
 
-            function showSlide(slideNumber) {
-                document.querySelectorAll('.slide').forEach(slide => {
-                    slide.classList.remove('active');
-                });
-                const nextSlideElement = document.getElementById(`slide-${slideNumber}`);
-                if (nextSlideElement) {
-                    nextSlideElement.classList.add('active');
-                    slideCounter.textContent = `${slideNumber} / ${totalSlides}`;
-                }
+<div id="slide-counter" class="fixed bottom-4 left-4 text-gray-600 bg-white px-3 py-1 rounded-full shadow-lg text-sm">
+    1 / 10
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        let currentSlide = 1;
+        const totalSlides = document.querySelectorAll('.slide').length;
+        const slideCounter = document.getElementById('slide-counter');
+
+        function showSlide(slideNumber) {
+            document.querySelectorAll('.slide').forEach(slide => {
+                slide.classList.remove('active');
+            });
+            const nextSlideElement = document.getElementById(`slide-${slideNumber}`);
+            if (nextSlideElement) {
+                nextSlideElement.classList.add('active');
+                slideCounter.textContent = `${slideNumber} / ${totalSlides}`;
             }
+        }
 
-            document.getElementById('nextBtn').addEventListener('click', () => {
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            if (currentSlide > 1) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
                 if (currentSlide < totalSlides) {
                     currentSlide++;
                     showSlide(currentSlide);
                 }
-            });
-
-            document.getElementById('prevBtn').addEventListener('click', () => {
-                if (currentSlide > 1) {
+            } else if (e.key === 'ArrowLeft') {
+                 if (currentSlide > 1) {
                     currentSlide--;
                     showSlide(currentSlide);
                 }
-            });
-
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowRight' || e.key === ' ') {
-                    if (currentSlide < totalSlides) {
-                        currentSlide++;
-                        showSlide(currentSlide);
-                    }
-                } else if (e.key === 'ArrowLeft') {
-                     if (currentSlide > 1) {
-                        currentSlide--;
-                        showSlide(currentSlide);
-                    }
-                }
-            });
-            
-            showSlide(currentSlide);
+            }
         });
-    </script>
+
+        showSlide(currentSlide);
+    });
+</script>
 
 </body>
 </html>
+
