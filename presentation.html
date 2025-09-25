@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>硕士学位论文开题报告</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+        }
+        .slide {
+            display: none;
+            min-height: 100vh;
+            scroll-snap-align: start;
+        }
+        .slide.active {
+            display: flex;
+        }
+        .math-block {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            background-color: #f3f4f6;
+            margin: 1rem 0;
+            text-align: left;
+            font-size: 1.1rem;
+        }
+        .brand-logo {
+            max-width: 150px; /* 控制logo大小 */
+            opacity: 0.8;
+        }
+        /* Gemini API 功能相关样式 */
+        .gemini-modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 40;
+            display: none; /* 默认隐藏 */
+        }
+        .gemini-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 50;
+            display: none; /* 默认隐藏 */
+        }
+        .loader {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .gemini-btn {
+            background-color: #eef2ff;
+            color: #4338ca;
+            border: 1px solid #c7d2fe;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .gemini-btn:hover {
+            background-color: #e0e7ff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 antialiased">
+
+    <!-- Gemini API Modal -->
+    <div id="gemini-modal-backdrop" class="gemini-modal-backdrop"></div>
+    <div id="gemini-modal" class="gemini-modal w-11/12 max-w-2xl bg-white rounded-lg shadow-xl p-6">
+        <div class="flex justify-between items-center mb-4">
+            <h3 id="gemini-modal-title" class="text-xl font-bold">Gemini 生成内容</h3>
+            <button id="gemini-modal-close" class="text-gray-500 hover:text-gray-800">&times;</button>
+        </div>
+        <div id="gemini-modal-content" class="text-gray-700 prose max-w-none">
+            <!-- Loading indicator -->
+            <div id="gemini-loader" class="flex justify-center items-center py-8">
+                <div class="loader"></div>
+            </div>
+            <!-- Generated content will be inserted here -->
+            <div id="gemini-output"></div>
+        </div>
+    </div>
+    
+    <audio id="tts-audio-player" class="hidden"></audio>
+
+    <div id="slides-container" class="w-full h-full">
+
+        <!-- 幻灯片 1: 封面 -->
+        <div id="slide-1" class="slide active flex-col items-center justify-center text-center p-8 bg-white">
+             <!-- 内容与之前相同 -->
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">基于轨迹预测与李雅普诺夫优化的RIS辅助智能汽车边缘计算网络研究</h1>
+            <h2 class="text-2xl md:text-3xl font-semibold text-gray-600 mb-12">硕士学位论文开题报告</h2>
+            <div class="text-lg text-gray-700">
+                <p class="mb-2"><strong>汇报人：</strong> 谢俊颖</p>
+                <p class="mb-2"><strong>指导教师：</strong> 陈睿 副教授</p>
+                <p class="mb-2"><strong>所在学院：</strong> 计算机与数学学院</p>
+                <p><strong>汇报日期：</strong> 2025年09月15日</p>
+            </div>
+             <img src="./7d4f9e8855cb8b7a4e12dbee61d3e30e.jpg" alt="[中南林业科技大学Logo]" class="brand-logo absolute bottom-8 left-8">
+        </div>
+
+        <!-- 幻灯片 2: 目录 -->
+        <div id="slide-2" class="slide flex-col items-center justify-center p-8 bg-gray-50">
+            <h2 class="text-3xl font-bold mb-8 text-center">汇报大纲</h2>
+            <div class="space-y-4 text-xl text-left w-full max-w-2xl">
+                <div class="p-4 bg-white rounded-lg shadow-sm transition hover:shadow-md"><b>1.</b> <span class="ml-2">研究背景与意义</span> <span class="text-gray-500 ml-2">(Why?)</span></div>
+                <div class="p-4 bg-white rounded-lg shadow-sm transition hover:shadow-md"><b>2.</b> <span class="ml-2">国内外研究现状</span> <span class="text-gray-500 ml-2">(What's been done?)</span></div>
+                <div class="p-4 bg-white rounded-lg shadow-sm transition hover:shadow-md"><b>3.</b> <span class="ml-2">研究内容与思路</span> <span class="text-gray-500 ml-2">(What & How?)</span></div>
+                <div class="p-4 bg-white rounded-lg shadow-sm transition hover:shadow-md"><b>4.</b> <span class="ml-2">创新点与预期成果</span> <span class="text-gray-500 ml-2">(Novelty & Outcome)</span></div>
+                <div class="p-4 bg-white rounded-lg shadow-sm transition hover:shadow-md"><b>5.</b> <span class="ml-2">研究方法与进度安排</span> <span class="text-gray-500 ml-2">(Methodology & Plan)</span></div>
+            </div>
+            <!-- Gemini 功能按钮 -->
+            <div class="absolute top-4 right-4 flex space-x-2">
+                <button class="gemini-btn" data-action="simplify">✨ 一键简化</button>
+                <button class="gemini-btn" data-action="generate-questions">✨ 生成答辩问题</button>
+                <button class="gemini-btn" data-action="tts">▶️ 朗读本页</button>
+            </div>
+        </div>
+
+        <!-- 幻灯片 3: 研究背景与意义 -->
+        <div id="slide-3" class="slide items-center justify-center p-8 lg:p-12 bg-white relative">
+             <!-- 内容与之前相同 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl w-full">
+                <div class="flex flex-col justify-center">
+                    <h2 class="text-3xl font-bold mb-6">1. 研究背景与意义</h2>
+                    <h3 class="text-xl font-semibold text-blue-600 mb-4">智能汽车时代：机遇与“边缘”挑战</h3>
+                    <ul class="space-y-3 text-lg list-disc list-inside">
+                        <li><b>背景：海量数据，极致时延</b>
+                            <ul class="ml-6 text-base text-gray-600 space-y-1 mt-1">
+                                <li>智能汽车(L4级)每秒产生高达<b>GB级</b>数据，要求 <b>&lt; 50ms</b> 超低时延。</li>
+                                <li>传统云计算面临瓶颈，<b>车辆边缘计算 (VEC)</b> 成为关键。</li>
+                            </ul>
+                        </li>
+                        <li><b>核心挑战：动态性与随机性</b>
+                             <ul class="ml-6 text-base text-gray-600 space-y-1 mt-1">
+                                <li><b>高动态性</b>: 车辆高速移动，无线信道快速时变。</li>
+                                <li><b>任务随机性</b>: 计算任务突发，易导致系统过载、队列不稳定。</li>
+                            </ul>
+                        </li>
+                        <li><b>研究意义：构建稳定、高效的智能汽车“大脑”</b>
+                             <ul class="ml-6 text-base text-gray-600 space-y-1 mt-1">
+                                <li><b>理论上</b>：探索数据驱动预测与模型驱动优化的融合理论。</li>
+                                <li><b>实践上</b>：降低车载能耗(>30%)，提升系统响应速度，支撑“车-路-云”一体化架构。</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="flex items-center justify-center">
+                    <img src="https://images.unsplash.com/photo-1549317661-bd3b2ae4c0c8?q=80&w=800&auto=format&fit=crop" alt="[智能汽车在城市道路上行驶的图片]" class="rounded-lg shadow-2xl object-cover h-full max-h-[500px]">
+                </div>
+            </div>
+            <!-- Gemini 功能按钮 -->
+            <div class="absolute top-4 right-4 flex space-x-2">
+                <button class="gemini-btn" data-action="simplify">✨ 一键简化</button>
+                <button class="gemini-btn" data-action="generate-questions">✨ 生成答辩问题</button>
+                <button class="gemini-btn" data-action="tts">▶️ 朗读本页</button>
+            </div>
+        </div>
+
+        <!-- 幻灯片 4: 国内外研究现状 -->
+        <div id="slide-4" class="slide flex-col items-center justify-center p-8 bg-gray-50 relative">
+             <!-- 内容与之前相同 -->
+            <h2 class="text-3xl font-bold mb-2">2. 国内外研究现状</h2>
+            <p class="text-lg text-gray-600 mb-8">站在巨人肩膀上：现有研究的进展与空白</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl w-full">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3 text-blue-700">动态任务卸载</h3>
+                    <p class="mb-2"><b>进展:</b> 采用深度强化学习(DRL)、博弈论等方法应对车辆移动性。</p>
+                    <p class="text-red-600"><b>不足:</b> DRL缺乏稳定性理论保证；博弈论模型多假设静态任务分布。</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3 text-blue-700">RIS辅助的边缘计算</h3>
+                    <p class="mb-2"><b>进展:</b> 已证实RIS能显著提升无人机/静态场景的通信与能量效率。</p>
+                    <p class="text-red-600"><b>不足:</b> 鲜有研究将RIS应用于高动态、双重随机的车联网场景。</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3 text-blue-700">李雅普诺夫优化应用</h3>
+                    <p class="mb-2"><b>进展:</b> 成功用于无人机网络，解决任务随机到达下的队列稳定性问题。</p>
+                    <p class="text-red-600"><b>不足:</b> 未考虑地面车辆复杂的、受交通环境约束的移动模式。</p>
+                </div>
+            </div>
+            <div class="mt-8 p-4 bg-blue-100 text-blue-800 rounded-lg max-w-6xl w-full text-center font-medium">
+                <b>研究空白 (Research Gap):</b> 缺乏一个能将<b>轨迹预测</b>、<b>RIS链路增强</b>、<b>李雅普诺夫稳定性保证</b>三者有效结合的统一优化框架。
+            </div>
+             <!-- Gemini 功能按钮 -->
+            <div class="absolute top-4 right-4 flex space-x-2">
+                <button class="gemini-btn" data-action="simplify">✨ 一键简化</button>
+                <button class="gemini-btn" data-action="generate-questions">✨ 生成答辩问题</button>
+                <button class="gemini-btn" data-action="tts">▶️ 朗读本页</button>
+            </div>
+        </div>
+        
+        <!-- 幻灯片 5: 研究内容与思路 - 总体框架 -->
+        <div id="slide-5" class="slide flex-col items-center justify-center p-8 bg-white relative">
+             <!-- 内容与之前相同 -->
+            <h2 class="text-3xl font-bold mb-2">3. 研究内容与思路 - 总体框架</h2>
+            <p class="text-lg text-gray-600 mb-8">思路：轨迹预测赋能的前瞻性在线优化</p>
+            <div class="max-w-4xl w-full">
+                <img src="https://i.imgur.com/G5g2mJc.png" alt="[研究思路框架图]" class="w-full rounded-lg shadow-xl">
+            </div>
+            <div class="mt-6 text-center text-lg max-w-4xl">
+                 通过“<b>动态感知</b> → <b>长期问题转化</b> → <b>实时分层决策</b>”的闭环思路，解决VEC网络中的双重挑战。
+            </div>
+             <!-- Gemini 功能按钮 -->
+            <div class="absolute top-4 right-4 flex space-x-2">
+                <button class="gemini-btn" data-action="simplify">✨ 一键简化</button>
+                <button class="gemini-btn" data-action="generate-questions">✨ 生成答辩问题</button>
+                <button class="gemini-btn" data-action="tts">▶️ 朗读本页</button>
+            </div>
+        </div>
+
+        <!-- 幻灯片 6: 研究内容与思路 - 系统模型与目标 -->
+        <div id="slide-6" class="slide flex-col items-center justify-center p-8 bg-gray-50 relative">
+             <!-- 内容与之前相同 -->
+            <h2 class="text-3xl font-bold mb-2">3. 研究内容与思路 - 系统模型与目标</h2>
+            <p class="text-lg text-gray-600 mb-8">问题建模：如何用数学语言描述问题？</p>
+            <div class="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="font-semibold text-xl mb-3">系统模型</h3>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li><b>网络模型:</b> 包含智能汽车(OBU)、路侧单元(RSU)和RIS。</li>
+                        <li><b>信道模型:</b> Rician衰落 + RIS级联信道。</li>
+                        <li><b>任务模型:</b> 任务随机到达，维护车载和边缘两级任务队列。</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="font-semibold text-xl mb-3">优化目标 (P0): 最小化长期平均代价</h3>
+                    <div class="math-block">
+                        $$
+                        \begin{aligned}
+                        (P0): \quad & \min_{X} \lim_{T \to \infty} \frac{1}{T} \sum_{t=0}^{T-1} \mathbb{E}[\text{Power}(t) + w \cdot \text{Delay}(t)] \\
+                        s.t. \quad & (C1): \text{All task queues are stable.} \\
+                               & (C2): \text{Resource constraints, etc.}
+                        \end{aligned}
+                        $$
+                    </div>
+                </div>
+                <div class="md:col-span-2 bg-white p-6 rounded-lg shadow">
+                     <h3 class="font-semibold text-xl mb-3">核心方法: 李雅普诺夫优化</h3>
+                     <p class="mb-2">通过最小化“漂移+惩罚”函数，将长期随机问题 `(P0)` 转化为每时隙求解的确定性问题 `(P1)`：</p>
+                     <div class="math-block">
+                        $$
+                        (P1): \quad \min_{X(t)} \Delta(t) + V \cdot (\text{Power}(t) + w \cdot \text{Delay}(t))
+                        $$
+                     </div>
+                </div>
+            </div>
+             <!-- Gemini 功能按钮 -->
+            <div class="absolute top-4 right-4 flex space-x-2">
+                <button class="gemini-btn" data-action="simplify">✨ 一键简化</button>
+                <button class="gemini-btn" data-action="generate-questions">✨ 生成答辩问题</button>
+                <button class="gemini-btn" data-action="tts">▶️ 朗读本页</button>
+            </div>
+        </div>
+
+        <!-- 幻灯片 7: 学术创新点 -->
+        <div id="slide-7" class="slide flex-col items-center justify-center p-8 bg-white relative">
+             <!-- 内容与之前相同 -->
+            <h2 class="text-3xl font-bold mb-8">4. 学术创新点</h2>
+            <div class="max-w-5xl w-full space-y-6">
+                <div class="p-6 bg-gray-50 rounded-lg border-l-4 border-blue-500">
+                    <h3 class="text-xl font-bold mb-2">创新点一：融合预测与在线优化的新框架</h3>
+                    <p>首次将数据驱动的<b>LSTM轨迹预测</b>与模型驱动的<b>李雅普诺夫在线优化</b>相结合。利用预测信息克服传统在线优化的<b>“决策近视”</b>问题，实现对车辆高移动性的前瞻性应对。</p>
+                </div>
+                <div class="p-6 bg-gray-50 rounded-lg border-l-4 border-green-500">
+                    <h3 class="text-xl font-bold mb-2">创新点二：面向队列稳定性的RIS动态调控方法</h3>
+                    <p>突破RIS研究多以“最大化瞬时速率”为目标的局限，提出一种服务于<b>长期队列稳定性</b>的RIS动态相移策略，为RIS在动态随机网络中的应用提供了新思路。</p>
+                </div>
+                <div class="p-6 bg-gray-50 rounded-lg border-l-4 border-purple-500">
+                    <h3 class="text-xl font-bold mb-2">创新点三：动态环境下计算-通信资源的跨层协同机制</h3>
+                    <p>构建<b>轨迹-物理层(RIS)-MAC层(通信)-应用层(计算)</b>的跨层联合优化框架，能够根据预测轨迹和当前队列状态，动态权衡通信时延与计算负载。</p>
+                </div>
+            </div>
+             <!-- Gemini 功能按钮 -->
+            <div class="absolute top-4 right-4 flex space-x-2">
+                <button class="gemini-btn" data-action="simplify">✨ 一键简化</button>
+                <button class="gemini-btn" data-action="generate-questions">✨ 生成答辩问题</button>
+                <button class="gemini-btn" data-action="tts">▶️ 朗读本页</button>
+            </div>
+        </div>
+
+        <!-- 幻灯片 8: 预期成果 -->
+        <div id="slide-8" class="slide items-center justify-center p-8 bg-gray-50 relative">
+             <!-- 内容与之前相同 -->
+             <div class="max-w-6xl w-full">
+                <h2 class="text-3xl font-bold mb-8 text-center">4. 预期成果</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="text-blue-500 mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v11.494m-5.253-7.494h10.5M12 21.75c-5.385 0-9.75-4.365-9.75-9.75S6.615 2.25 12 2.25s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z" /></svg></div>
+                        <h3 class="text-xl font-semibold mb-2">理论成果</h3>
+                        <p class="text-gray-600">发表<b>高水平论文1-2篇</b>，提出一套完整的<b>理论模型与优化框架</b>。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="text-green-500 mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l-4 4-4-4M6 16l-4-4 4-4" /></svg></div>
+                        <h3 class="text-xl font-semibold mb-2">技术成果</h3>
+                        <p class="text-gray-600">完成<b>仿真原型系统</b>，实现：时延降低<b>>15%</b>, 能耗降低<b>>20%</b>, 队列<b>稳定有界</b>。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="text-purple-500 mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg></div>
+                        <h3 class="text-xl font-semibold mb-2">应用成果</h3>
+                        <p class="text-gray-600">形成<b>技术报告1份</b>，为车路协同系统部署提供技术参考。</p>
+                    </div>
+                </div>
+             </div>
+             <!-- Gemini 功能按钮 -->
+            <div class="absolute top-4 right-4 flex space-x-2">
+                <button class="gemini-btn" data-action="simplify">✨ 一键简化</button>
+                <button class="gemini-btn" data-action="generate-questions">✨ 生成答辩问题</button>
+                <button class="gemini-btn" data-action="tts">▶️ 朗读本页</button>
+            </div>
+        </div>
+
+        <!-- 幻灯片 9: 研究方法与进度安排 -->
+        <div id="slide-9" class="slide items-center justify-center p-8 bg-white relative">
+             <!-- 内容与之前相同 -->
+            <div class="max-w-6xl w-full">
+                <h2 class="text-3xl font-bold mb-8 text-center">5. 研究方法与进度安排</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-4">研究方法</h3>
+                        <ul class="space-y-3">
+                            <li class="p-3 bg-gray-50 rounded-md"><b>理论建模:</b> 随机过程、排队论、最优化理论。</li>
+                            <li class="p-3 bg-gray-50 rounded-md"><b>算法设计:</b> 李雅普诺夫优化、块坐标下降法(BCD)、LSTM。</li>
+                            <li class="p-3 bg-gray-50 rounded-md"><b>实验验证:</b>
+                                <ul class="list-disc list-inside ml-4 mt-1 text-sm text-gray-700">
+                                    <li><b>仿真平台:</b> MATLAB/Python + SUMO + NS-3</li>
+                                    <li><b>数据集:</b> Waymo Open Dataset等</li>
+                                    <li><b>对比方案:</b> Random, Without-RIS, Non-predictive等</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-4">进度安排</h3>
+                        <ul class="space-y-3">
+                            <li class="p-3 bg-gray-50 rounded-md"><b>2023.10—2024.05:</b> 文献调研，确定框架，完成模型设计。</li>
+                            <li class="p-3 bg-gray-50 rounded-md"><b>2024.06—2024.12:</b> 算法设计与仿真验证，优化参数。</li>
+                            <li class="p-3 bg-gray-50 rounded-md"><b>2025.01—2025.03:</b> 撰写论文初稿，整理研究成果。</li>
+                            <li class="p-3 bg-gray-50 rounded-md"><b>2025.04—2026.03:</b> 完善论文，准备毕业答辩。</li>
+                            <li class="p-3 bg-gray-50 rounded-md"><b>2026.04—2026.06:</b> 论文送审与答辩。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+             <!-- Gemini 功能按钮 -->
+            <div class="absolute top-4 right-4 flex space-x-2">
+                <button class="gemini-btn" data-action="simplify">✨ 一键简化</button>
+                <button class="gemini-btn" data-action="generate-questions">✨ 生成答辩问题</button>
+                <button class="gemini-btn" data-action="tts">▶️ 朗读本页</button>
+            </div>
+        </div>
+
+        <!-- 幻灯片 10: 结束页 -->
+        <div id="slide-10" class="slide flex-col items-center justify-center text-center p-8 bg-gray-800 text-white">
+            <h2 class="text-4xl font-bold mb-4">汇报完毕</h2>
+            <p class="text-2xl text-gray-300">请各位老师批评指正</p>
+            <p class="text-3xl mt-8">谢谢！</p>
+        </div>
+
+    </div>
+
+    <!-- 导航按钮 -->
+    <div class="fixed bottom-4 right-4 flex space-x-2 z-10">
+        <button id="prevBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-lg transition transform hover:scale-105">
+            上一页
+        </button>
+        <button id="nextBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-lg transition transform hover:scale-105">
+            下一页
+        </button>
+    </div>
+    
+    <div id="slide-counter" class="fixed bottom-4 left-4 text-gray-600 bg-white px-3 py-1 rounded-full shadow-lg text-sm z-10">
+        1 / 10
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- 基础导航逻辑 ---
+            let currentSlide = 1;
+            const totalSlides = document.querySelectorAll('.slide').length;
+            const slideCounter = document.getElementById('slide-counter');
+
+            function showSlide(slideNumber) {
+                document.querySelectorAll('.slide').forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                const nextSlideElement = document.getElementById(`slide-${slideNumber}`);
+                if (nextSlideElement) {
+                    nextSlideElement.classList.add('active');
+                    slideCounter.textContent = `${slideNumber} / ${totalSlides}`;
+                }
+            }
+
+            document.getElementById('nextBtn').addEventListener('click', () => {
+                if (currentSlide < totalSlides) {
+                    currentSlide++;
+                    showSlide(currentSlide);
+                }
+            });
+
+            document.getElementById('prevBtn').addEventListener('click', () => {
+                if (currentSlide > 1) {
+                    currentSlide--;
+                    showSlide(currentSlide);
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight' || e.key === ' ') {
+                    if (currentSlide < totalSlides) {
+                        currentSlide++;
+                        showSlide(currentSlide);
+                    }
+                } else if (e.key === 'ArrowLeft') {
+                     if (currentSlide > 1) {
+                        currentSlide--;
+                        showSlide(currentSlide);
+                    }
+                }
+            });
+            
+            showSlide(currentSlide);
+            
+            // --- Gemini API 功能逻辑 ---
+            const modalBackdrop = document.getElementById('gemini-modal-backdrop');
+            const modal = document.getElementById('gemini-modal');
+            const modalTitle = document.getElementById('gemini-modal-title');
+            const loader = document.getElementById('gemini-loader');
+            const outputDiv = document.getElementById('gemini-output');
+            const audioPlayer = document.getElementById('tts-audio-player');
+
+            function showModal(title) {
+                modalTitle.textContent = title;
+                outputDiv.innerHTML = '';
+                loader.style.display = 'flex';
+                modal.style.display = 'block';
+                modalBackdrop.style.display = 'block';
+            }
+
+            function hideModal() {
+                modal.style.display = 'none';
+                modalBackdrop.style.display = 'none';
+                audioPlayer.pause();
+                audioPlayer.src = '';
+            }
+
+            document.getElementById('gemini-modal-close').addEventListener('click', hideModal);
+            modalBackdrop.addEventListener('click', hideModal);
+
+            function getSlideTextContent(slideElement) {
+                let content = [];
+                slideElement.querySelectorAll('h2, h3, p, li').forEach(el => {
+                    // 过滤掉按钮和脚本等不需要的元素
+                    if (!el.closest('button') && !el.closest('script')) {
+                         content.push(el.textContent.trim());
+                    }
+                });
+                return content.join('\n');
+            }
+            
+            // --- 文本生成 API 调用 ---
+            async function callGemini(prompt, slideContent) {
+                const apiKey = ""; // Canvas will provide this
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                
+                const fullPrompt = `${prompt}\n\n---\n${slideContent}`;
+                const payload = {
+                    contents: [{ parts: [{ text: fullPrompt }] }]
+                };
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const result = await response.json();
+                    return result.candidates?.[0]?.content?.parts?.[0]?.text || "抱歉，无法生成内容。";
+                } catch (error) {
+                    console.error("Gemini API call failed:", error);
+                    return "调用API时出错，请检查控制台获取更多信息。";
+                }
+            }
+            
+            // --- TTS API 调用 ---
+            function base64ToArrayBuffer(base64) {
+                const binaryString = window.atob(base64);
+                const len = binaryString.length;
+                const bytes = new Uint8Array(len);
+                for (let i = 0; i < len; i++) {
+                    bytes[i] = binaryString.charCodeAt(i);
+                }
+                return bytes.buffer;
+            }
+
+            function pcmToWav(pcmData, sampleRate) {
+                const header = new ArrayBuffer(44);
+                const view = new DataView(header);
+                
+                // RIFF chunk descriptor
+                view.setUint32(0, 0x52494646, false); // "RIFF"
+                view.setUint32(4, 36 + pcmData.byteLength, true);
+                view.setUint32(8, 0x57415645, false); // "WAVE"
+                
+                // "fmt " sub-chunk
+                view.setUint32(12, 0x666d7420, false); // "fmt "
+                view.setUint32(16, 16, true); // Subchunk1Size for PCM
+                view.setUint16(20, 1, true); // AudioFormat 1 for PCM
+                view.setUint16(22, 1, true); // NumChannels 1 for mono
+                view.setUint32(24, sampleRate, true);
+                view.setUint32(28, sampleRate * 2, true); // ByteRate
+                view.setUint16(32, 2, true); // BlockAlign
+                view.setUint16(34, 16, true); // BitsPerSample
+                
+                // "data" sub-chunk
+                view.setUint32(36, 0x64617461, false); // "data"
+                view.setUint32(40, pcmData.byteLength, true);
+
+                return new Blob([header, pcmData], { type: 'audio/wav' });
+            }
+
+            async function callGeminiTTS(slideContent) {
+                const apiKey = ""; // Canvas will provide this
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
+                
+                const prompt = `请用标准、沉稳的普通话，以学术汇报的风格朗读以下内容：\n\n${slideContent}`;
+                
+                const payload = {
+                    contents: [{ parts: [{ text: prompt }] }],
+                    generationConfig: { responseModalities: ["AUDIO"] },
+                    model: "gemini-2.5-flash-preview-tts"
+                };
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    const result = await response.json();
+                    
+                    const part = result?.candidates?.[0]?.content?.parts?.[0];
+                    const audioData = part?.inlineData?.data;
+                    const mimeType = part?.inlineData?.mimeType;
+
+                    if (audioData && mimeType && mimeType.startsWith("audio/")) {
+                        const sampleRateMatch = mimeType.match(/rate=(\d+)/);
+                        const sampleRate = sampleRateMatch ? parseInt(sampleRateMatch[1], 10) : 24000;
+                        const pcmData = base64ToArrayBuffer(audioData);
+                        const pcm16 = new Int16Array(pcmData);
+                        const wavBlob = pcmToWav(pcm16, sampleRate);
+                        const audioUrl = URL.createObjectURL(wavBlob);
+                        
+                        audioPlayer.src = audioUrl;
+                        audioPlayer.play();
+                        return true;
+                    } else {
+                       throw new Error("Invalid audio data in response.");
+                    }
+                } catch(error) {
+                    console.error("TTS API call failed:", error);
+                    alert("语音生成失败，请稍后再试。");
+                    return false;
+                }
+            }
+
+
+            // --- 事件监听 ---
+            document.querySelectorAll('.gemini-btn').forEach(button => {
+                button.addEventListener('click', async (e) => {
+                    const action = e.target.dataset.action;
+                    const activeSlide = document.querySelector('.slide.active');
+                    const slideContent = getSlideTextContent(activeSlide);
+
+                    if (action === 'simplify') {
+                        showModal('✨ 内容简化');
+                        const prompt = "请用更简洁、通俗的语言解释以下学术内容，保留核心信息，使其更易于理解，以要点的形式输出：";
+                        const result = await callGemini(prompt, slideContent);
+                        loader.style.display = 'none';
+                        outputDiv.innerHTML = result.replace(/\n/g, '<br>');
+                    } else if (action === 'generate-questions') {
+                        showModal('✨ 模拟答辩提问');
+                        const prompt = "你是一位经验丰富的计算机领域的教授和博士生导师。请根据以下硕士开题报告幻灯片的内容，设想并提出3个评审老师可能会在答辩时提出的、具有深度和挑战性的问题。请直接以问题的列表形式返回，不要有其他多余的文字。";
+                        const result = await callGemini(prompt, slideContent);
+                        loader.style.display = 'none';
+                        outputDiv.innerHTML = result.replace(/\n/g, '<br>');
+                    } else if (action === 'tts') {
+                        alert("即将开始朗读当前页面内容...");
+                        await callGeminiTTS(slideContent);
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
+
